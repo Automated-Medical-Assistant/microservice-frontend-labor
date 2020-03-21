@@ -1,0 +1,9 @@
+framework:
+    messenger:
+        transports:
+            NumberChangeStateRequestAPI.NumberService: "%env(NumberChangeStateRequestAPI_NumberService)%"
+
+        routing:
+            'MessageInfo\NumberChangeStateRequestAPIDataProvider' : NumberChangeStateRequestAPI.NumberService
+
+
