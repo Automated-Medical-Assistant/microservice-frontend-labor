@@ -8,4 +8,4 @@ login:
 
 home:
     path: /
-    controller: App\Controller\Security::home
+    controller: App\Controller\App::home
