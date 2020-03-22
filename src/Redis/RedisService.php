@@ -47,6 +47,12 @@ class RedisService implements RedisServiceInterface
         return $this->mget($allKeys);
     }
 
+    public function getAllStatus()
+    {
+        $allKeys = $this->client->keys('number*');
+        return $this->mget($allKeys);
+    }
+
     /**
      * @param array $keys
      *

@@ -47,10 +47,18 @@ class App extends AbstractController
      */
     public function home(): Response
     {
-        return $this->render('app/home.html.twig', [
+        $numbers = (array)$this->redisService->getAllStatus();
+        $numberDtoList = [];
+        foreach ($numbers as $number) {
+            $numberDto = new NumberAPIDataProvider();
+            $numberDto->fromArray(json_decode($number, true));
+            $numberDtoList[] = $numberDto;
+        }
+
+        return $this->render('app/list.html.twig', [
+            'numberDtoList' => $numberDtoList,
         ]);
     }
-
 
     /**
      * @Route("/status/{nummer}/update", name="status_update", methods={"GET","POST"})
