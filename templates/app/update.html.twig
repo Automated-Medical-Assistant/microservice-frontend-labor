@@ -4,5 +4,21 @@
 
 {% block body %}
 
-        <h1>Info:</h1>
+    <h1>Info:</h1>
+
+    Nummer: {{ numerApi.number }} <br>
+    Create date: {{ numerApi.creationDate }} <br>
+
+    {% if numerApi.status is null %}
+            <br>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <br>
+            <button class="btn">{{ 'save'|trans }}</button>
+        {{ form_end(form) }}
+    {% else %}
+        Status: {% if numerApi.status %}positiv{% else %}negative{% endif %}<br>
+        Create status date: {{ numerApi.modifiedStateDate }} <br>
+    {% endif %}
+
 {% endblock %}

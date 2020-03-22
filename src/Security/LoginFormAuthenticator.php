@@ -88,7 +88,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             throw new InvalidCsrfTokenException();
         }
 
-        $user = json_decode($this->redisService->get('user:' . $credentials['username']), true);
+        $user = json_decode((string)$this->redisService->get('user:' . $credentials['username']), true);
         if ($user && isset($user['email'])) {
             $userDTO = new UserAPIDataProvider();
             $userDTO->fromArray($user);
