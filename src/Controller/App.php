@@ -87,7 +87,7 @@ class App extends AbstractController
             $this->messageBus->dispatch($numerUpdateAPI);
 
             $numberListAPIDataProvider = new NumberListAPIDataProvider();
-            $numberListAPIDataProvider->setNumbers($numerAPI);
+            $numberListAPIDataProvider->setNumbers([$numerAPI]);
             $this->numberListHandler->__invoke($numberListAPIDataProvider);
         }
 
