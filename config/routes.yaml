@@ -1,3 +1,11 @@
 test:
     path: /test
     controller: App\Controller\Test::test
+
+login:
+    path: /login
+    controller: App\Controller\Security::login
+
+home:
+    path: /
+    controller: App\Controller\Security::home
