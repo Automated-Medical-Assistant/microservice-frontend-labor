@@ -45,7 +45,7 @@
                             {{ form_start(form) }}
                             {{ form_widget(form) }}
                             <br>
-                            <button class="btn">{{ 'save'|trans }}</button>
+                            <button class="btn btn-info btn-block">{{ 'save'|trans }}</button>
                             {{ form_end(form) }}
                         {% else %}
                             Status: {% if numerApi.status %}positiv{% else %}negative{% endif %}<br>

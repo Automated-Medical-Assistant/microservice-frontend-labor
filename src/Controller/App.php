@@ -55,7 +55,7 @@ class App extends AbstractController
             $numberDtoList[] = $numberDto;
         }
 
-        return $this->render('app/list.html.twig', [
+        return $this->render('app/home.html.twig', [
             'numberDtoList' => $numberDtoList,
         ]);
     }

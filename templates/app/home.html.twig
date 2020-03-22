@@ -17,7 +17,7 @@
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Patient Overview</h6>
                         <div class="dropdown no-arrow">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -35,9 +35,47 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                        <div class="chart-area">
-                            <canvas id="myAreaChart"></canvas>
-                        </div>
+                        <table class="table table-hover table-responsive-xl">
+                            <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>creation date</th>
+                                <th>add status date</th>
+                                <th>status</th>
+                                <th>set status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for numberDto in numberDtoList %}
+                                <tr>
+                                    <td>{{ numberDto.number }}</td>
+                                    <td>{{ numberDto.creationDate }}</td>
+                                    <td>{{ numberDto.modifiedStateDate }}</td>
+                                    <td>{% if numberDto.status is null %}
+                                            wait for result
+                                        {% elseif numberDto.status %}
+                                            positiv
+                                        {% else %}
+                                            negativ
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('status_update', {'nummer': numberDto.number}) }}">
+                                            {% if numberDto.status is null %}
+                                                edit
+                                            {% else %}
+                                                show
+                                            {% endif %}
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
